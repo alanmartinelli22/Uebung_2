@@ -20,9 +20,13 @@ class Vector3:
         return Vector3(self.x * other, self.y * other, self.z * other,)
     
     def dot(self, other):
+        if not type(other) == Vector3:
+            raise TypeError("Parameter has to be type Vector3")
         return self.x * other.x + self.y * other.y + self.z * other.z
     
     def cross(self, other):
+        if not type(other) == Vector3:
+            raise TypeError("Parameter has to be type Vector3")
         x = self.y * other.z - self.z * other.y
         y = self.z * other.x - self.x * other.z
         z = self.x * other.y - self.y * other.x
