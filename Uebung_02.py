@@ -14,10 +14,11 @@ class Vector3:
         return Vector3(self.x - other.x, self.y - other.y, self.z - other.z,)
     
     def __mul__(self, other):
-        return Vector3(self.x * other.x, self.y * other.y, self.z * other.z,)
-    
-    def __rmul__(self, other):
-        return Vector3(self.x * other, self.y * other, self.z * other,)
+        if type(other) == Vector3:
+            return Vector3(self.x * other.x, self.y * other.y, self.z * other.z,)
+        if type(other) == float or type(other) == int:
+            return Vector3(self.x * other, self.y * other, self.z * other,)
+        raise TypeError("Parameter has to be either type float, int or Vector3")
     
     def dot(self, other):
         if not type(other) == Vector3:
